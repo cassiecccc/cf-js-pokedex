@@ -6,17 +6,22 @@ let pokemonList = [
   { name: "Slowbro", height: "1.6", types: ["psychic", "water"] },
 ];
 
-//iterate over and log pokemonList
-for (let i = 0; i <= pokemonList.length; i++) {
-  //add height conditions
-  if (pokemonList[i].height > 1) {
-    document.write(
-      `${pokemonList[i].name} height(${pokemonList[i].height}) - Wow, that's big!` +
-        "<br>"
-    );
-  } else {
-    document.write(
-      `${pokemonList[i].name} height(${pokemonList[i].height})` + "<br>"
-    );
-  }
-}
+//changed for loop to forEach
+pokemonList.forEach((pokemon) =>
+  pokemon.height > 1
+    ? document.write(
+        "<p>" +
+          pokemon.name +
+          " " +
+          "(height" +
+          " " +
+          pokemon.height +
+          ")" +
+          " " +
+          "Wow, that's big!" +
+          "</p>"
+      )
+    : document.write(
+        "<p>" + pokemon.name + " " + "(height" + " " + pokemon.height + ")"
+      ) + "</p>"
+);
