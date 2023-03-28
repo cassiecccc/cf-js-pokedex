@@ -1,3 +1,21 @@
-p {
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+ul {
   font-size: 2rem;
+}
+
+li {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.name-button {
+  border: none;
+  width: 40%;
+  padding: 1rem;
+  text-align: left;
+  font-size: 1.5rem;
 }
