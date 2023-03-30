@@ -42,6 +42,7 @@ let pokemonRepository = (function () {
         item.height = details.height;
         item.types = details.types;
         item.name = details.name;
+        item.url = details.sprites.front_default;
       })
       .catch((e) => {
         console.error(e);
@@ -70,11 +71,9 @@ let pokemonRepository = (function () {
     const modalName = document.querySelector("#modal-name");
     const modalHeight = document.querySelector("#modal-height");
     const modalImage = document.querySelector("#modal-image");
-
     modalName.innerText = `Name: ${pokemon.name}`;
     modalHeight.innerText = `Height: ${pokemon.height}`;
-
-    modalImage.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.order}.png`;
+    modalImage.src = `${pokemon.url}`;
   }
 
   //click function
