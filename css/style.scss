@@ -27,19 +27,21 @@ li {
 #modal-container {
   display: none;
   position: relative;
-}
-#modal-container p {
-  color: white;
-  font-size: 3rem;
-  cursor: default;
-}
-#modal-container #close-button {
-  position: absolute;
-  right: 20px;
-  cursor: pointer;
-}
-#modal-container #modal-image {
-  width: 100%;
+  p {
+    color: white;
+    font-size: 3rem;
+    cursor: default;
+  }
+
+  #close-button {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  #modal-image {
+    width: 100%;
+  }
 }
 
 #modal-container.is-visible {
@@ -54,4 +56,4 @@ li {
   overflow: auto;
   display: grid;
   justify-content: center;
-}/*# sourceMappingURL=style.css.map */
+}
