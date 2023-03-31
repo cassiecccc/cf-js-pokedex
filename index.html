@@ -4,23 +4,59 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <title>CF JS Project</title>
   </head>
   <body>
-    <ul class="pokemon-list">
-      Pokedex
-    </ul>
-    <div id="modal-container">
-      <div id="modal">
-        <p id="close-button">X</p>
-        <p id="modal-name"></p>
-        <p id="modal-height"></p>
-        <img id="modal-image" src="" alt="pokemon image" />
+    <!-- bootstrap navbar -->
+    <nav role="navigation" class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand">Pokedex</a>
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
-    </div>
+    </nav>
+    <main>
+      <ul class="pokemon-list list-group"></ul>
+
+      <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 id="modal-name" class="modal-title"></h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p id="modal-height"></p>
+              <img id="modal-image" src="" alt="pokemon image" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch.umd.js"></script>
     <script src="js/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
