@@ -1,3 +1,13 @@
+/* eslint-disable no-var */
+/* eslint-disable no-unexpected-multiline */
+/* eslint-disable new-cap */
+/* eslint-disable no-sequences */
+/* eslint-disable no-void */
+/* eslint-disable indent */
+/* eslint-disable no-undef */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable yoda */
 !(function (e, t) {
   "object" == typeof exports && "undefined" != typeof module
     ? t()
@@ -7,7 +17,7 @@
 })(0, function () {
   "use strict";
   function e(e) {
-    var t = this.constructor;
+    const t = this.constructor;
     return this.then(
       function (n) {
         return t.resolve(e()).then(function () {
@@ -25,8 +35,8 @@
     return new this(function (t, n) {
       function r(e, n) {
         if (n && ("object" == typeof n || "function" == typeof n)) {
-          var f = n.then;
-          if ("function" == typeof f)
+          const f = n.then;
+          if ("function" == typeof f) {
             return void f.call(
               n,
               function (t) {
@@ -36,10 +46,11 @@
                 (o[e] = { status: "rejected", reason: n }), 0 == --i && t(o);
               }
             );
+          }
         }
         (o[e] = { status: "fulfilled", value: n }), 0 == --i && t(o);
       }
-      if (!e || "undefined" == typeof e.length)
+      if (!e || "undefined" == typeof e.length) {
         return n(
           new TypeError(
             typeof e +
@@ -48,7 +59,8 @@
               " is not iterable(cannot read property Symbol(Symbol.iterator))"
           )
         );
-      var o = Array.prototype.slice.call(e);
+      }
+      const o = Array.prototype.slice.call(e);
       if (0 === o.length) return t([]);
       for (var i = o.length, f = 0; o.length > f; f++) r(f, o[f]);
     });
@@ -57,17 +69,18 @@
     (this.name = "AggregateError"), (this.errors = e), (this.message = t || "");
   }
   function r(e) {
-    var t = this;
+    const t = this;
     return new t(function (r, o) {
-      if (!e || "undefined" == typeof e.length)
+      if (!e || "undefined" == typeof e.length) {
         return o(new TypeError("Promise.any accepts an array"));
-      var i = Array.prototype.slice.call(e);
+      }
+      const i = Array.prototype.slice.call(e);
       if (0 === i.length) return o();
-      for (var f = [], u = 0; i.length > u; u++)
+      for (var f = [], u = 0; i.length > u; u++) {
         try {
           t.resolve(i[u])
             .then(r)
-            ["catch"](function (e) {
+            .catch(function (e) {
               f.push(e),
                 f.length === i.length &&
                   o(new n(f, "All promises were rejected"));
@@ -75,6 +88,7 @@
         } catch (c) {
           o(c);
         }
+      }
     });
   }
   function o(e) {
@@ -82,8 +96,9 @@
   }
   function i() {}
   function f(e) {
-    if (!(this instanceof f))
+    if (!(this instanceof f)) {
       throw new TypeError("Promises must be constructed via new");
+    }
     if ("function" != typeof e) throw new TypeError("not a function");
     (this._state = 0),
       (this._handled = !1),
@@ -96,9 +111,9 @@
     0 !== e._state
       ? ((e._handled = !0),
         f._immediateFn(function () {
-          var n = 1 === e._state ? t.onFulfilled : t.onRejected;
+          const n = 1 === e._state ? t.onFulfilled : t.onRejected;
           if (null !== n) {
-            var r;
+            let r;
             try {
               r = n(e._value);
             } catch (o) {
@@ -111,12 +126,13 @@
   }
   function c(e, t) {
     try {
-      if (t === e)
+      if (t === e) {
         throw new TypeError("A promise cannot be resolved with itself.");
+      }
       if (t && ("object" == typeof t || "function" == typeof t)) {
-        var n = t.then;
+        const n = t.then;
         if (t instanceof f) return (e._state = 3), (e._value = t), void l(e);
-        if ("function" == typeof n)
+        if ("function" == typeof n) {
           return void s(
             (function (e, t) {
               return function () {
@@ -125,6 +141,7 @@
             })(n, t),
             e
           );
+        }
       }
       (e._state = 1), (e._value = t), l(e);
     } catch (r) {
@@ -140,11 +157,11 @@
       f._immediateFn(function () {
         e._handled || f._unhandledRejectionFn(e._value);
       });
-    for (var t = 0, n = e._deferreds.length; n > t; t++) u(e, e._deferreds[t]);
+    for (let t = 0, n = e._deferreds.length; n > t; t++) u(e, e._deferreds[t]);
     e._deferreds = null;
   }
   function s(e, t) {
-    var n = !1;
+    let n = !1;
     try {
       e(
         function (e) {
@@ -160,12 +177,12 @@
     }
   }
   n.prototype = Error.prototype;
-  var d = setTimeout;
-  (f.prototype["catch"] = function (e) {
+  const d = setTimeout;
+  (f.prototype.catch = function (e) {
     return this.then(null, e);
   }),
     (f.prototype.then = function (e, t) {
-      var n = new this.constructor(i);
+      const n = new this.constructor(i);
       return (
         u(
           this,
@@ -178,14 +195,14 @@
         n
       );
     }),
-    (f.prototype["finally"] = e),
+    (f.prototype.finally = e),
     (f.all = function (e) {
       return new f(function (t, n) {
         function r(e, o) {
           try {
             if (o && ("object" == typeof o || "function" == typeof o)) {
-              var u = o.then;
-              if ("function" == typeof u)
+              const u = o.then;
+              if ("function" == typeof u) {
                 return void u.call(
                   o,
                   function (t) {
@@ -193,6 +210,7 @@
                   },
                   n
                 );
+              }
             }
             (i[e] = o), 0 == --f && t(i);
           } catch (c) {
@@ -222,7 +240,7 @@
     (f.race = function (e) {
       return new f(function (t, n) {
         if (!o(e)) return n(new TypeError("Promise.race accepts an array"));
-        for (var r = 0, i = e.length; i > r; r++) f.resolve(e[r]).then(t, n);
+        for (let r = 0, i = e.length; i > r; r++) f.resolve(e[r]).then(t, n);
       });
     }),
     (f._immediateFn =
@@ -238,7 +256,7 @@
         console &&
         console.warn("Possible Unhandled Promise Rejection:", e);
     });
-  var p = (function () {
+  const p = (function () {
     if ("undefined" != typeof self) return self;
     if ("undefined" != typeof window) return window;
     if ("undefined" != typeof global) return global;
@@ -246,7 +264,7 @@
   })();
   "function" != typeof p.Promise
     ? (p.Promise = f)
-    : (p.Promise.prototype["finally"] || (p.Promise.prototype["finally"] = e),
+    : (p.Promise.prototype.finally || (p.Promise.prototype.finally = e),
       p.Promise.allSettled || (p.Promise.allSettled = t),
       p.Promise.any || (p.Promise.any = r));
 });

@@ -1,6 +1,6 @@
-let pokemonRepository = (function () {
-  let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+const pokemonRepository = (function () {
+  const pokemonList = [];
+  const apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   function getAll() {
     return pokemonList;
@@ -10,7 +10,7 @@ let pokemonRepository = (function () {
     pokemonList.push(pokemon);
   }
 
-  //load list
+  // load list
   function loadList() {
     return fetch(apiUrl)
       .then((response) => {
@@ -18,7 +18,7 @@ let pokemonRepository = (function () {
       })
       .then((json) => {
         json.results.forEach((item) => {
-          let pokemon = {
+          const pokemon = {
             name: item.name,
             detailsUrl: item.url,
           };
@@ -30,9 +30,9 @@ let pokemonRepository = (function () {
       });
   }
 
-  //load details
+  // load details
   function loadDetails(item) {
-    let url = item.detailsUrl;
+    const url = item.detailsUrl;
     return fetch(url)
       .then((respnose) => {
         return respnose.json();
@@ -51,9 +51,9 @@ let pokemonRepository = (function () {
 
   function addListItem(pokemon) {
     const pokemonList = document.querySelector(".pokemon-list");
-    let listItem = document.createElement("li");
+    const listItem = document.createElement("li");
     listItem.classList.add("list-group-item");
-    let button = document.createElement("button");
+    const button = document.createElement("button");
     button.classList.add("name-button");
     button.classList.add("btn");
     button.classList.add("btn-primary");
@@ -65,7 +65,7 @@ let pokemonRepository = (function () {
     pokemonList.appendChild(listItem);
   }
 
-  //show modal
+  // show modal
   function showDetails(pokemon) {
     loadDetails(pokemon).then(() => {
       showModal(pokemon);
@@ -81,7 +81,7 @@ let pokemonRepository = (function () {
     modalImage.src = `${pokemon.url}`;
   }
 
-  //click function
+  // click function
   const modalContainer = document.querySelector(".modal");
 
   function openModal(button, pokemon) {
@@ -101,7 +101,7 @@ let pokemonRepository = (function () {
     });
     window.addEventListener("keydown", (e) => {
       if (
-        e.key === `Escape` &&
+        e.key === "Escape" &&
         modalContainer.classList.contains("is-visible")
       ) {
         modalContainer.classList.remove("is-visible");
@@ -112,12 +112,12 @@ let pokemonRepository = (function () {
   closeModal();
 
   return {
-    add: add,
-    getAll: getAll,
-    addListItem: addListItem,
-    loadList: loadList,
-    loadDetails: loadDetails,
-    showDetails: showDetails,
+    add,
+    getAll,
+    addListItem,
+    loadList,
+    loadDetails,
+    showDetails,
   };
 })();
 
